@@ -20,8 +20,15 @@ const Login = () => {
       alert('Invalid login');
     } else {
       localStorage.setItem('user', JSON.stringify(data));
-      alert('Login successful');
-      navigate('/user');
+
+      // Check if the user is an admin or a regular user
+      if (data.role === 'admin') {
+        alert('Admin login successful');
+        navigate('/admin');
+      } else {
+        alert('User login successful');
+        navigate('/user');
+      }
     }
   };
 
